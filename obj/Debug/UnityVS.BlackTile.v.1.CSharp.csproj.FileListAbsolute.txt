@@ -1,0 +1,11 @@
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\UnityEditor.dll
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\UnityEngine.dll
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\UnityEngine.xml
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\UnityEditor.xml
+G:\Game Development\BlackTile\Development\BlackTile.v.1\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+G:\Game Development\BlackTile\Development\BlackTile.v.1\obj\Debug\UnityVS.BlackTile.v.1.CSharp.csprojResolveAssemblyReference.cache
+G:\Game Development\BlackTile\Development\BlackTile.v.1\obj\Debug\Assembly-CSharp.dll
+G:\Game Development\BlackTile\Development\BlackTile.v.1\obj\Debug\Assembly-CSharp.pdb
