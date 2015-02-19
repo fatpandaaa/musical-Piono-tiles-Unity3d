@@ -4,10 +4,12 @@ using System.Collections;
 using System.Runtime.InteropServices;
 
 
-namespace ChartboostSDK {
+namespace ChartboostSDK
+{
 
 	/// Returned to ChartboostDelegate methods to notify of Chartboost SDK errors.
-	public enum CBImpressionError : int {
+	public enum CBImpressionError : int
+	{
 		/// An error internal to the Chartboost SDK
 		Internal = 0, // 4, 7 also, 8 on ios
 		/// No internet connection was found
@@ -44,7 +46,8 @@ namespace ChartboostSDK {
 		ErrorCreatingView = 17,
 		// Erro when trying to display view (Android only)
 		ErrorDisplayingView = 18
-	};
+	}
+	;
 
 	/// <summary>
 	///  Defines standard locations to describe where Chartboost SDK features appear in game.
@@ -57,66 +60,70 @@ namespace ChartboostSDK {
 	///		- Better reporting.
 	///
 	/// </summary>
-	public sealed class CBLocation {
+	public sealed class CBLocation
+	{
 		
 		private readonly string name; 
-		private static Hashtable map = new Hashtable();
+		private static Hashtable map = new Hashtable ();
 		
-		private CBLocation(string name) {
+		private CBLocation (string name)
+		{
 			this.name = name;
-			map.Add(name, this);
+			map.Add (name, this);
 		}
 
 		/// <summary>
 		/// Returns a String that represents the current CBLocation.
 		/// </summary>
 		/// <returns>A String that represents the current CBLocation</returns>
-		public override String ToString() {
+		public override String ToString ()
+		{
 			return name;
 		}
 		
 		/// Default location
-		public static readonly CBLocation Default = new CBLocation("Default");
+		public static readonly CBLocation Default = new CBLocation ("Default");
 		/// initial startup of your app
-		public static readonly CBLocation Startup = new CBLocation("Startup");
+		public static readonly CBLocation Startup = new CBLocation ("Startup");
 		/// home screen the player first sees
-		public static readonly CBLocation HomeScreen = new CBLocation("Home Screen");
+		public static readonly CBLocation HomeScreen = new CBLocation ("Home Screen");
 		/// Menu that provides game options
-		public static readonly CBLocation MainMenu = new CBLocation("Main Menu");
+		public static readonly CBLocation MainMenu = new CBLocation ("Main Menu");
 		/// Menu that provides game options
-		public static readonly CBLocation GameScreen = new CBLocation("Game Screen");
+		public static readonly CBLocation GameScreen = new CBLocation ("Game Screen");
 		/// Screen with list achievements in the game
-		public static readonly CBLocation Achievements = new CBLocation("Achievements");
+		public static readonly CBLocation Achievements = new CBLocation ("Achievements");
 		/// Quest, missions or goals screen describing things for a player to do
-		public static readonly CBLocation Quests = new CBLocation("Quests");
+		public static readonly CBLocation Quests = new CBLocation ("Quests");
 		/// Pause screen
-		public static readonly CBLocation Pause = new CBLocation("Pause");
+		public static readonly CBLocation Pause = new CBLocation ("Pause");
 		/// Start of the level
-		public static readonly CBLocation LevelStart = new CBLocation("Level Start");
+		public static readonly CBLocation LevelStart = new CBLocation ("Level Start");
 		/// Completion of the level
-		public static readonly CBLocation LevelComplete = new CBLocation("Level Complete");
+		public static readonly CBLocation LevelComplete = new CBLocation ("Level Complete");
 		/// Finishing a turn in a game
-		public static readonly CBLocation TurnComplete = new CBLocation("Turn Complete");
+		public static readonly CBLocation TurnComplete = new CBLocation ("Turn Complete");
 		/// The store where the player pays real money for currency or items
-		public static readonly CBLocation IAPStore = new CBLocation("IAP Store");
+		public static readonly CBLocation IAPStore = new CBLocation ("IAP Store");
 		/// The store where a player buys virtual goods
-		public static readonly CBLocation ItemStore = new CBLocation("Item Store");
+		public static readonly CBLocation ItemStore = new CBLocation ("Item Store");
 		/// The game over screen after a player is finished playing
-		public static readonly CBLocation GameOver = new CBLocation("Game Over");
+		public static readonly CBLocation GameOver = new CBLocation ("Game Over");
 		/// List of leaders in the game
-		public static readonly CBLocation LeaderBoard = new CBLocation("Leaderboard");
+		public static readonly CBLocation LeaderBoard = new CBLocation ("Leaderboard");
 		/// Screen where player can change settings such as sound
-		public static readonly CBLocation Settings = new CBLocation("Settings");
+		public static readonly CBLocation Settings = new CBLocation ("Settings");
 		/// Screen display right before the player exists an app
-		public static readonly CBLocation Quit = new CBLocation("Quit");
+		public static readonly CBLocation Quit = new CBLocation ("Quit");
 		
-		public static CBLocation locationFromName(string name) {
+		public static CBLocation locationFromName (string name)
+		{
 			if (name == null)
 				return CBLocation.Default;
-			else if (map[name] != null)
-				return map[name] as CBLocation;
+			else if (map [name] != null)
+				return map [name] as CBLocation;
 			else
-				return new CBLocation(name);
+				return new CBLocation (name);
 		}
 	}
 
@@ -125,7 +132,8 @@ namespace ChartboostSDK {
 	///  For more information on integrating and using the Chartboost SDK
 	///  please visit our help site documentation at https://help.chartboost.com
 	/// </summary>
-	public class Chartboost: MonoBehaviour {
+	public class Chartboost: MonoBehaviour
+	{
 
 
 		//////////////////////////////////////////////////////
@@ -372,8 +380,9 @@ namespace ChartboostSDK {
 		/// <summary>
 		/// This method can be used to check if any chartboost ad views are visible
 		/// </summary>
-		public static void isAnyViewVisible() {
-			CBExternal.isAnyViewVisible();
+		public static void isAnyViewVisible ()
+		{
+			CBExternal.isAnyViewVisible ();
 		}
 
 		//////////////////////////////////////////////////////
@@ -387,8 +396,9 @@ namespace ChartboostSDK {
 		///	the method will attempt to fetch data from the Chartboost API server.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void cacheInterstitial(CBLocation location) {
-			CBExternal.cacheInterstitial(location);
+		public static void cacheInterstitial (CBLocation location)
+		{
+			CBExternal.cacheInterstitial (location);
 		}
 
 		/// <summary>
@@ -399,8 +409,9 @@ namespace ChartboostSDK {
 		/// </summary>
 		/// <returns>true if the interstitial is cached, false if not.</returns>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static bool hasInterstitial(CBLocation location) {
-			return CBExternal.hasInterstitial(location);
+		public static bool hasInterstitial (CBLocation location)
+		{
+			return CBExternal.hasInterstitial (location);
 		}
 
 		/// <summary>
@@ -413,8 +424,9 @@ namespace ChartboostSDK {
 		///	is a no-op.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void showInterstitial(CBLocation location) {
-			CBExternal.showInterstitial(location);
+		public static void showInterstitial (CBLocation location)
+		{
+			CBExternal.showInterstitial (location);
 		}
 		
 		/// <summary>
@@ -424,8 +436,9 @@ namespace ChartboostSDK {
 		///	the method will attempt to fetch data from the Chartboost API server.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void cacheMoreApps(CBLocation location) {
-			CBExternal.cacheMoreApps(location);
+		public static void cacheMoreApps (CBLocation location)
+		{
+			CBExternal.cacheMoreApps (location);
 		}
 
 		/// <summary>
@@ -436,8 +449,9 @@ namespace ChartboostSDK {
 		/// </summary>
 		/// <returns>true if the "more applications" is cached, false if not.</returns>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static bool hasMoreApps(CBLocation location) {
-			return CBExternal.hasMoreApps(location);
+		public static bool hasMoreApps (CBLocation location)
+		{
+			return CBExternal.hasMoreApps (location);
 		}
 		
 		/// <summary>
@@ -450,8 +464,9 @@ namespace ChartboostSDK {
 		///	is a no-op.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void showMoreApps(CBLocation location) {
-			CBExternal.showMoreApps(location);
+		public static void showMoreApps (CBLocation location)
+		{
+			CBExternal.showMoreApps (location);
 		}
 
 		/// <summary>
@@ -461,8 +476,9 @@ namespace ChartboostSDK {
 		///	the method will attempt to fetch data from the Chartboost API server.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void cacheRewardedVideo(CBLocation location) {
-			CBExternal.cacheRewardedVideo(location);
+		public static void cacheRewardedVideo (CBLocation location)
+		{
+			CBExternal.cacheRewardedVideo (location);
 		}
 		
 		/// <summary>
@@ -473,8 +489,9 @@ namespace ChartboostSDK {
 		/// </summary>
 		/// <returns>true if the rewarded video is cached, false if not.</returns>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static bool hasRewardedVideo(CBLocation location) {
-			return CBExternal.hasRewardedVideo(location);
+		public static bool hasRewardedVideo (CBLocation location)
+		{
+			return CBExternal.hasRewardedVideo (location);
 		}
 		
 		/// <summary>
@@ -487,8 +504,9 @@ namespace ChartboostSDK {
 		///	is a no-op.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void showRewardedVideo(CBLocation location) {
-			CBExternal.showRewardedVideo(location);
+		public static void showRewardedVideo (CBLocation location)
+		{
+			CBExternal.showRewardedVideo (location);
 		}
 
 		/// <summary>
@@ -498,8 +516,9 @@ namespace ChartboostSDK {
 		///	the method will attempt to fetch data from the Chartboost API server.
 		/// </summary>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static void cacheInPlay(CBLocation location) {
-			CBExternal.cacheInPlay(location);
+		public static void cacheInPlay (CBLocation location)
+		{
+			CBExternal.cacheInPlay (location);
 		}
 		
 		/// <summary>
@@ -510,8 +529,9 @@ namespace ChartboostSDK {
 		/// </summary>
 		/// <returns>true if the in play ad is cached, false if not.</returns>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static bool hasInPlay(CBLocation location) {
-			return CBExternal.hasInPlay(location);
+		public static bool hasInPlay (CBLocation location)
+		{
+			return CBExternal.hasInPlay (location);
 		}
 		
 		/// <summary>
@@ -525,8 +545,9 @@ namespace ChartboostSDK {
 		/// </summary>
 		/// <returns>Returns an object of CBInPlay class, which contains a Texture2D of the appIcon and a String AppName. Look at CBInPlay.cs for more information.</returns>
 		/// <param name="location">The location for the Chartboost impression type.</param>
-		public static CBInPlay getInPlay(CBLocation location) {
-			return CBExternal.getInPlay(location);
+		public static CBInPlay getInPlay (CBLocation location)
+		{
+			return CBExternal.getInPlay (location);
 		}
 		//////////////////////////////////////////////////////
 		/// Additional Config functions provided by Chartboost SDK
@@ -540,16 +561,18 @@ namespace ChartboostSDK {
 		///	will halt until this is done.
 		/// </summary>
 		/// <param name="pass">The result of successfully passing the age confirmation.</param>
-		public static void didPassAgeGate(bool pass) {
-			CBExternal.didPassAgeGate(pass);
+		public static void didPassAgeGate (bool pass)
+		{
+			CBExternal.didPassAgeGate (pass);
 		}
 		
 		/// <summary>
 		/// Decide if Chartboost SDK should block for an age gate.
 		/// </summary>
 		/// <param name="shouldPause">true if Chartboost should pause for an age gate, false otherwise.</param>
-		public static void setShouldPauseClickForConfirmation(bool shouldPause) {
-			CBExternal.setShouldPauseClickForConfirmation(shouldPause);
+		public static void setShouldPauseClickForConfirmation (bool shouldPause)
+		{
+			CBExternal.setShouldPauseClickForConfirmation (shouldPause);
 		}
 		
 		/// <summary>
@@ -558,8 +581,9 @@ namespace ChartboostSDK {
 		/// dashboard to group information by.
 		/// </summary>
 		/// <returns>The identifier being sent with all Chartboost API server requests.</returns>
-		public static String getCustomId() {
-			return CBExternal.getCustomId();
+		public static String getCustomId ()
+		{
+			return CBExternal.getCustomId ();
 		}
 		
 		/// <summary>
@@ -568,8 +592,9 @@ namespace ChartboostSDK {
 		/// dashboard to group information by.
 		/// </summary>
 		/// <param name="customId">The identifier to send with all Chartboost API server requests.</param>
-		public static void setCustomId(String customId) {
-			CBExternal.setCustomId(customId);
+		public static void setCustomId (String customId)
+		{
+			CBExternal.setCustomId (customId);
 		}
 		
 		/// <summary>
@@ -579,8 +604,9 @@ namespace ChartboostSDK {
 		///	developer to manage the caching behavior of Chartboost impressions.
 		/// </summary>
 		/// <returns>true if the auto cache is enabled, false if it is not.</returns>
-		public static bool getAutoCacheAds() {
-			return CBExternal.getAutoCacheAds();
+		public static bool getAutoCacheAds ()
+		{
+			return CBExternal.getAutoCacheAds ();
 		}
 		
 		/// <summary>
@@ -590,8 +616,9 @@ namespace ChartboostSDK {
 		///	developer to manage the caching behavior of Chartboost impressions.
 		/// </summary>
 		/// <param name="autoCacheAds">The param to enable or disable auto caching.</param>
-		public static void setAutoCacheAds(bool autoCacheAds) {
-			CBExternal.setAutoCacheAds(autoCacheAds);
+		public static void setAutoCacheAds (bool autoCacheAds)
+		{
+			CBExternal.setAutoCacheAds (autoCacheAds);
 		}
 		
 		/// <summary>
@@ -601,8 +628,9 @@ namespace ChartboostSDK {
 		///	Default is true.
 		/// </summary>
 		/// <param name="shouldRequest">true if allowed to show interstitials in first session, false otherwise.</param>
-		public static void setShouldRequestInterstitialsInFirstSession(bool shouldRequest) {
-			CBExternal.setShouldRequestInterstitialsInFirstSession(shouldRequest);
+		public static void setShouldRequestInterstitialsInFirstSession (bool shouldRequest)
+		{
+			CBExternal.setShouldRequestInterstitialsInFirstSession (shouldRequest);
 		}
 		
 		/// <summary>
@@ -611,8 +639,9 @@ namespace ChartboostSDK {
 		///	Default is false.
 		/// </summary>
 		/// <param name="shouldDisplay">true if Chartboost should display a loading view, false otherwise.</param>
-		public static void setShouldDisplayLoadingViewForMoreApps(bool shouldDisplay) {
-			CBExternal.setShouldDisplayLoadingViewForMoreApps(shouldDisplay);
+		public static void setShouldDisplayLoadingViewForMoreApps (bool shouldDisplay)
+		{
+			CBExternal.setShouldDisplayLoadingViewForMoreApps (shouldDisplay);
 		}
 		
 		/// <summary>
@@ -621,8 +650,9 @@ namespace ChartboostSDK {
 		/// Default is YES.
 		/// </summary>
 		/// <param name="shouldPrefetch">true if Chartboost should prefetch video content, false otherwise.</param>
-		public static void setShouldPrefetchVideoContent(bool shouldPrefetch) {
-			CBExternal.setShouldPrefetchVideoContent(shouldPrefetch);
+		public static void setShouldPrefetchVideoContent (bool shouldPrefetch)
+		{
+			CBExternal.setShouldPrefetchVideoContent (shouldPrefetch);
 		}
 
 		//////////////////////////////////////////////////////
@@ -640,8 +670,9 @@ namespace ChartboostSDK {
 		/// <param name="productId">The google play identifier for the product.</param>
 		/// <param name="purchaseData">The purchase data string for the transaction.</param>
 		/// <param name="purchaseSignature">The purchase signature for the transaction.</param>
-		public static void trackInAppGooglePlayPurchaseEvent(string title, string description, string price, string currency, string productID, string purchaseData, string purchaseSignature) {
-			CBExternal.trackInAppGooglePlayPurchaseEvent(title,description,price,currency,productID,purchaseData,purchaseSignature);
+		public static void trackInAppGooglePlayPurchaseEvent (string title, string description, string price, string currency, string productID, string purchaseData, string purchaseSignature)
+		{
+			CBExternal.trackInAppGooglePlayPurchaseEvent (title, description, price, currency, productID, purchaseData, purchaseSignature);
 		}
 
 		/// <summary>
@@ -655,8 +686,9 @@ namespace ChartboostSDK {
 		/// <param name="productID">The amazon identifier for the product.</param>
 		/// <param name="userID">The user identifier for the transaction.</param>
 		/// <param name="purchaseToken">The purchase token for the transaction.</param>
-		public static void trackInAppAmazonStorePurchaseEvent(string title, string description, string price, string currency, string productID, string userID, string purchaseToken) {
-			CBExternal.trackInAppAmazonStorePurchaseEvent(title,description,price,currency,productID,userID,purchaseToken);
+		public static void trackInAppAmazonStorePurchaseEvent (string title, string description, string price, string currency, string productID, string userID, string purchaseToken)
+		{
+			CBExternal.trackInAppAmazonStorePurchaseEvent (title, description, price, currency, productID, userID, purchaseToken);
 		}
 #elif UNITY_IPHONE
 		/// <summary>
@@ -678,52 +710,57 @@ namespace ChartboostSDK {
 		/// Monobehaviour Lifecycle functionality
 		//////////////////////////////////////////////////////
 
-		void Awake() {
-			CBExternal.init();
-			CBExternal.setGameObjectName(gameObject.name);
-			DontDestroyOnLoad(gameObject);
+		void Awake ()
+		{
+			CBExternal.init ();
+			CBExternal.setGameObjectName (gameObject.name);
+			DontDestroyOnLoad (gameObject);
 		}
 
-		void Update() {
+		void Update ()
+		{
 			#if UNITY_ANDROID
 			// Handle the Android back button (only if impressions are set to not use activities)
-			if (Input.GetKeyUp(KeyCode.Escape)) {
+			if (Input.GetKeyUp (KeyCode.Escape)) {
 				// Check if Chartboost wants to respond to it
-				if (CBExternal.onBackPressed()) {
+				if (CBExternal.onBackPressed ()) {
 					// If so, return and ignore it
-					Debug.Log("chartboost is closing the visible impression");
+					Debug.Log ("chartboost is closing the visible impression");
 
 					return;
 				} else {
-					Debug.Log("Quit app - chartboost is closing the application");
-					Application.Quit();
+					Debug.Log ("Quit app - chartboost is closing the application");
+					//Application.Quit();
 				}
 			}
 			#endif
 		}
 		
-		void OnApplicationPause(bool paused) {
+		void OnApplicationPause (bool paused)
+		{
 			#if UNITY_ANDROID
 			// Manage Chartboost plugin lifecycle
-			CBExternal.pause(paused);
+			CBExternal.pause (paused);
 			#endif
 		}
 		
-		void OnDisable() {
+		void OnDisable ()
+		{
 			// Shut down the Chartboost plugin
 			#if UNITY_ANDROID
-			CBExternal.destroy();
+			CBExternal.destroy ();
 			#endif
 		}
 
 		//////////////////////////////////////////////////////
 		/// Managing the events and firing them
 		//////////////////////////////////////////////////////		
-		private static CBImpressionError impressionErrorFromInt(object errorObj) {
+		private static CBImpressionError impressionErrorFromInt (object errorObj)
+		{
 			bool ios = Application.platform == RuntimePlatform.IPhonePlayer;
 			int error;
 			try {
-				error = Convert.ToInt32(errorObj);
+				error = Convert.ToInt32 (errorObj);
 			} catch {
 				error = -1;
 			}
@@ -733,7 +770,7 @@ namespace ChartboostSDK {
 				outOfBounds = 18;
 
 			if (error < 0 || error > outOfBounds // out of bounds
-			    || error == 7 || (ios && error == 8)) // unused enums: sessionNotStarted, ageGateFailure
+				|| error == 7 || (ios && error == 8)) // unused enums: sessionNotStarted, ageGateFailure
 				return CBImpressionError.Internal;
 			else if (ios && error == 9)
 				return CBImpressionError.UserCancellation;
@@ -741,198 +778,218 @@ namespace ChartboostSDK {
 				return (CBImpressionError)error;
 		}
 
-		private void didFailToLoadInterstitialEvent(string dataString) {
-			Hashtable data = (Hashtable)CBJSON.Deserialize(dataString);
-			CBImpressionError error = impressionErrorFromInt(data["errorCode"]);
+		private void didFailToLoadInterstitialEvent (string dataString)
+		{
+			Hashtable data = (Hashtable)CBJSON.Deserialize (dataString);
+			CBImpressionError error = impressionErrorFromInt (data ["errorCode"]);
 			
 			if (didFailToLoadInterstitial != null)
-				didFailToLoadInterstitial(CBLocation.locationFromName(data["location"] as string), error);
+				didFailToLoadInterstitial (CBLocation.locationFromName (data ["location"] as string), error);
 		}
 		
-		private void didDismissInterstitialEvent(string location) {
-			doUnityPause(false);
+		private void didDismissInterstitialEvent (string location)
+		{
+			doUnityPause (false);
 			
 			if (didDismissInterstitial != null)
-				didDismissInterstitial(CBLocation.locationFromName(location));
+				didDismissInterstitial (CBLocation.locationFromName (location));
 		}
 		
-		private void didClickInterstitialEvent(string location) {
+		private void didClickInterstitialEvent (string location)
+		{
 			if (didClickInterstitial != null)
-				didClickInterstitial(CBLocation.locationFromName(location));
+				didClickInterstitial (CBLocation.locationFromName (location));
 		}
 		
-		private void didCloseInterstitialEvent(string location) {
+		private void didCloseInterstitialEvent (string location)
+		{
 			if (didCloseInterstitial != null)
-				didCloseInterstitial(CBLocation.locationFromName(location));
+				didCloseInterstitial (CBLocation.locationFromName (location));
 		}
 		
-		private void didCacheInterstitialEvent(string location) {
+		private void didCacheInterstitialEvent (string location)
+		{
 			if (didCacheInterstitial != null)
-				didCacheInterstitial(CBLocation.locationFromName(location));
+				didCacheInterstitial (CBLocation.locationFromName (location));
 		}
 		
-		private void shouldDisplayInterstitialEvent(string location) {
+		private void shouldDisplayInterstitialEvent (string location)
+		{
 			bool shouldDisplayInterstitialResponse = true;
 			if (shouldDisplayInterstitial != null)
-				shouldDisplayInterstitialResponse = shouldDisplayInterstitial(CBLocation.locationFromName(location));
-			CBExternal.chartBoostShouldDisplayInterstitialCallbackResult(shouldDisplayInterstitialResponse);
-			if (shouldDisplayInterstitialResponse)
-			{
-				Chartboost.showInterstitial(CBLocation.locationFromName(location));
+				shouldDisplayInterstitialResponse = shouldDisplayInterstitial (CBLocation.locationFromName (location));
+			CBExternal.chartBoostShouldDisplayInterstitialCallbackResult (shouldDisplayInterstitialResponse);
+			if (shouldDisplayInterstitialResponse) {
+				Chartboost.showInterstitial (CBLocation.locationFromName (location));
 			}
 		}
 
-		public void didDisplayInterstitialEvent(string location) {
-			if(didDisplayInterstitial != null)
-			{
-				doUnityPause(true);
-				didDisplayInterstitial(CBLocation.locationFromName(location));
+		public void didDisplayInterstitialEvent (string location)
+		{
+			if (didDisplayInterstitial != null) {
+				doUnityPause (true);
+				didDisplayInterstitial (CBLocation.locationFromName (location));
 			}
 		}
 		
-		private void didFailToLoadMoreAppsEvent(string dataString) {
-			Hashtable data = (Hashtable)CBJSON.Deserialize(dataString);
-			CBImpressionError error = impressionErrorFromInt(data["errorCode"]);
+		private void didFailToLoadMoreAppsEvent (string dataString)
+		{
+			Hashtable data = (Hashtable)CBJSON.Deserialize (dataString);
+			CBImpressionError error = impressionErrorFromInt (data ["errorCode"]);
 			
 			if (didFailToLoadMoreApps != null)
-				didFailToLoadMoreApps(CBLocation.locationFromName(data["location"] as string), error);
+				didFailToLoadMoreApps (CBLocation.locationFromName (data ["location"] as string), error);
 		}
 		
-		private void didDismissMoreAppsEvent(string location) {
-			doUnityPause(false);
+		private void didDismissMoreAppsEvent (string location)
+		{
+			doUnityPause (false);
 			
 			if (didDismissMoreApps != null)
-				didDismissMoreApps(CBLocation.locationFromName(location));
+				didDismissMoreApps (CBLocation.locationFromName (location));
 		}
 		
-		private void didClickMoreAppsEvent(string location) {
+		private void didClickMoreAppsEvent (string location)
+		{
 			if (didClickMoreApps != null)
-				didClickMoreApps(CBLocation.locationFromName(location));
+				didClickMoreApps (CBLocation.locationFromName (location));
 		}
 		
 		
-		private void didCloseMoreAppsEvent(string location) {
+		private void didCloseMoreAppsEvent (string location)
+		{
 			if (didCloseMoreApps != null)
-				didCloseMoreApps(CBLocation.locationFromName(location));
+				didCloseMoreApps (CBLocation.locationFromName (location));
 		}
 		
-		private void didCacheMoreAppsEvent(string location) {
+		private void didCacheMoreAppsEvent (string location)
+		{
 			if (didCacheMoreApps != null)
-				didCacheMoreApps(CBLocation.locationFromName(location));
+				didCacheMoreApps (CBLocation.locationFromName (location));
 		}
 		
-		private void shouldDisplayMoreAppsEvent(string location) {
+		private void shouldDisplayMoreAppsEvent (string location)
+		{
 			bool shouldDisplayMoreAppsResponse = true;
 			if (shouldDisplayMoreApps != null)
-				shouldDisplayMoreAppsResponse = shouldDisplayMoreApps(CBLocation.locationFromName(location));
-			CBExternal.chartBoostShouldDisplayMoreAppsCallbackResult(shouldDisplayMoreAppsResponse);
-			if (shouldDisplayMoreAppsResponse)
-			{
-				Chartboost.showMoreApps(CBLocation.locationFromName(location));
+				shouldDisplayMoreAppsResponse = shouldDisplayMoreApps (CBLocation.locationFromName (location));
+			CBExternal.chartBoostShouldDisplayMoreAppsCallbackResult (shouldDisplayMoreAppsResponse);
+			if (shouldDisplayMoreAppsResponse) {
+				Chartboost.showMoreApps (CBLocation.locationFromName (location));
 			}
 		}
 
-		private void didDisplayMoreAppsEvent(string location) {
-			if (didDisplayMoreApps != null)
-			{
-				doUnityPause(true);
-				didDisplayMoreApps(CBLocation.locationFromName(location));
+		private void didDisplayMoreAppsEvent (string location)
+		{
+			if (didDisplayMoreApps != null) {
+				doUnityPause (true);
+				didDisplayMoreApps (CBLocation.locationFromName (location));
 			}
 		}
 		
-		private void didFailToRecordClickEvent(string dataString) {
-			Hashtable data = (Hashtable)CBJSON.Deserialize(dataString);
-			CBImpressionError error = impressionErrorFromInt(data["errorCode"]);
+		private void didFailToRecordClickEvent (string dataString)
+		{
+			Hashtable data = (Hashtable)CBJSON.Deserialize (dataString);
+			CBImpressionError error = impressionErrorFromInt (data ["errorCode"]);
 			if (didFailToRecordClick != null)
-				didFailToRecordClick(CBLocation.locationFromName(data["location"] as string), error);
+				didFailToRecordClick (CBLocation.locationFromName (data ["location"] as string), error);
 		}
 		
-		private void didFailToLoadRewardedVideoEvent(string dataString) {
-			Hashtable data = (Hashtable)CBJSON.Deserialize(dataString);
-			CBImpressionError error = impressionErrorFromInt(data["errorCode"]);
+		private void didFailToLoadRewardedVideoEvent (string dataString)
+		{
+			Hashtable data = (Hashtable)CBJSON.Deserialize (dataString);
+			CBImpressionError error = impressionErrorFromInt (data ["errorCode"]);
 			
 			if (didFailToLoadRewardedVideo != null)
-				didFailToLoadRewardedVideo(CBLocation.locationFromName(data["location"] as string), error);
+				didFailToLoadRewardedVideo (CBLocation.locationFromName (data ["location"] as string), error);
 		}
 		
-		private void didDismissRewardedVideoEvent(string location) {
-			doUnityPause(false);
+		private void didDismissRewardedVideoEvent (string location)
+		{
+			doUnityPause (false);
 			
 			if (didDismissRewardedVideo != null)
-				didDismissRewardedVideo(CBLocation.locationFromName(location));
+				didDismissRewardedVideo (CBLocation.locationFromName (location));
 		}
 		
-		private void didClickRewardedVideoEvent(string location) {
+		private void didClickRewardedVideoEvent (string location)
+		{
 			if (didClickRewardedVideo != null)
-				didClickRewardedVideo(CBLocation.locationFromName(location));
+				didClickRewardedVideo (CBLocation.locationFromName (location));
 		}
 		
-		private void didCloseRewardedVideoEvent(string location) {
+		private void didCloseRewardedVideoEvent (string location)
+		{
 			if (didCloseRewardedVideo != null)
-				didCloseRewardedVideo(CBLocation.locationFromName(location));
+				didCloseRewardedVideo (CBLocation.locationFromName (location));
 		}
 		
-		private void didCacheRewardedVideoEvent(string location) {
+		private void didCacheRewardedVideoEvent (string location)
+		{
 			if (didCacheRewardedVideo != null)
-				didCacheRewardedVideo(CBLocation.locationFromName(location));
+				didCacheRewardedVideo (CBLocation.locationFromName (location));
 		}
 		
-		private void shouldDisplayRewardedVideoEvent(string location) {
+		private void shouldDisplayRewardedVideoEvent (string location)
+		{
 			bool shouldDisplayRewardedVideoResponse = true;
-			if (shouldDisplayRewardedVideo != null)
-			{
-				shouldDisplayRewardedVideoResponse = shouldDisplayRewardedVideo(CBLocation.locationFromName(location));
+			if (shouldDisplayRewardedVideo != null) {
+				shouldDisplayRewardedVideoResponse = shouldDisplayRewardedVideo (CBLocation.locationFromName (location));
 			}
 
-			CBExternal.chartBoostShouldDisplayRewardedVideoCallbackResult(shouldDisplayRewardedVideoResponse);
-			if (shouldDisplayRewardedVideoResponse)
-			{
-				Chartboost.showRewardedVideo(CBLocation.locationFromName(location));
+			CBExternal.chartBoostShouldDisplayRewardedVideoCallbackResult (shouldDisplayRewardedVideoResponse);
+			if (shouldDisplayRewardedVideoResponse) {
+				Chartboost.showRewardedVideo (CBLocation.locationFromName (location));
 			}
 		}
 		
-		private void didCompleteRewardedVideoEvent(string dataString) {
-			Hashtable data = (Hashtable)CBJSON.Deserialize(dataString);
+		private void didCompleteRewardedVideoEvent (string dataString)
+		{
+			Hashtable data = (Hashtable)CBJSON.Deserialize (dataString);
 			int reward;
 			try {
-				reward = Convert.ToInt32(data["reward"]);
+				reward = Convert.ToInt32 (data ["reward"]);
 			} catch {
 				reward = 0;
 			}
 			
 			if (didCompleteRewardedVideo != null)
-				didCompleteRewardedVideo(CBLocation.locationFromName(data["location"] as string), reward);
+				didCompleteRewardedVideo (CBLocation.locationFromName (data ["location"] as string), reward);
 		}
 
-		private void didDisplayRewardedVideoEvent(string location) {
-			if (didDisplayRewardedVideo != null) 
-			{
-				doUnityPause(true);
-				didDisplayRewardedVideo(CBLocation.locationFromName(location));
+		private void didDisplayRewardedVideoEvent (string location)
+		{
+			if (didDisplayRewardedVideo != null) {
+				doUnityPause (true);
+				didDisplayRewardedVideo (CBLocation.locationFromName (location));
 			}
 		}
 		
-		private void didLoadInPlay(string location) {
-			if(didCacheInPlay != null) 
-				didCacheInPlay(CBLocation.locationFromName(location));
+		private void didLoadInPlay (string location)
+		{
+			if (didCacheInPlay != null) 
+				didCacheInPlay (CBLocation.locationFromName (location));
 		}
 
-		private void didFailToLoadInPlayEvent(string dataString) {
-			Hashtable data = (Hashtable)CBJSON.Deserialize(dataString);
-			CBImpressionError error = impressionErrorFromInt(data["errorCode"]);
+		private void didFailToLoadInPlayEvent (string dataString)
+		{
+			Hashtable data = (Hashtable)CBJSON.Deserialize (dataString);
+			CBImpressionError error = impressionErrorFromInt (data ["errorCode"]);
 			
 			if (didFailToLoadInPlay != null)
-				didFailToLoadInPlay(CBLocation.locationFromName(data["location"] as string), error);
+				didFailToLoadInPlay (CBLocation.locationFromName (data ["location"] as string), error);
 		}
 
-		private void didPauseClickForConfirmationEvent() {
+		private void didPauseClickForConfirmationEvent ()
+		{
 			if (didPauseClickForConfirmation != null)
-				didPauseClickForConfirmation();
+				didPauseClickForConfirmation ();
 		}
 
-		private void willDisplayVideoEvent(string location) {
+		private void willDisplayVideoEvent (string location)
+		{
 			if (willDisplayVideo != null)
-				willDisplayVideo(CBLocation.locationFromName(location));
+				willDisplayVideo (CBLocation.locationFromName (location));
 		}
 		
 #if UNITY_IPHONE
@@ -949,13 +1006,13 @@ namespace ChartboostSDK {
 		private static float lastTimeScale = 0;
 		
 		/// Manages pausing
-		private static void doUnityPause(bool pause) {
+		private static void doUnityPause (bool pause)
+		{
 			if (pause && !isPaused) {
 				lastTimeScale = Time.timeScale;
 				Time.timeScale = 0;
 				isPaused = true;
-			} 
-			else if (!pause && isPaused){
+			} else if (!pause && isPaused) {
 				Time.timeScale = lastTimeScale;
 				isPaused = false;
 			}
@@ -964,7 +1021,8 @@ namespace ChartboostSDK {
 		/// Returns true if an impression (interstitial or more apps page) is currently visible
 		/// Due to Unity optimizations, touch events will pass through Chartboost impressions.
 		/// You will have to use this method to check if a Chartboost impression is open in any code that responds to touch events
-		public static bool isImpressionVisible() {
+		public static bool isImpressionVisible ()
+		{
 			return isPaused;
 		}
 	}
