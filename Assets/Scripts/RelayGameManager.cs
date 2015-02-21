@@ -67,7 +67,7 @@ public class RelayGameManager : MonoBehaviour
 			//totalTap = 50;
 			timeCounter = 12f;
 		}
-
+        gameManager.ResetNoteIndex();
 		//timeSlider.minValue = 0f;
 		//timeSlider.maxValue = timeCounter;
 		GenerateFullGrid ();

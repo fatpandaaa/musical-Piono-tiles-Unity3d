@@ -8,13 +8,18 @@ public class GameManager : MonoBehaviour
 
 	public bool isSoundOn = true;
 	public int subLevelIndex = 1;
+    public int[] noteOrder = new int[26];
 	public AudioClip[] audio;
     public GameObject particleEffect;
-	private AudioSource[] audioSource = new AudioSource[26];
+	
+    private AudioSource[] audioSource = new AudioSource[26];
+    private int noteInd = 0;
+
 	void Start ()
 	{
 		isSoundOn = true;
-		Debug.Log (audio.Length);
+        noteInd = 0;
+		//Debug.Log (audio.Length);
 		for (int i = 0; i < audio.Length; i++) {
 			audioSource [i] = this.gameObject.AddComponent ("AudioSource") as AudioSource;
             
@@ -33,10 +38,17 @@ public class GameManager : MonoBehaviour
 
 	public void PlayRandomNote ()
 	{
-		int rnd = Random.Range (0, 26);
+		//int rnd = Random.Range (0, 26);
 
-		audioSource [rnd].Play ();
+        audioSource[noteOrder[noteInd] - 1].Play();
+        noteInd++;
+        if (noteInd > audio.Length - 1)
+            noteInd = 0;
 	}
+
+    public void ResetNoteIndex() {
+        noteInd = 0;
+    }
 
 	public void SoundToggle ()
 	{

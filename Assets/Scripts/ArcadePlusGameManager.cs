@@ -86,6 +86,7 @@ public class ArcadePlusGameManager : MonoBehaviour
 		if (currentMode == ArcadeMode.Lightning) {
 			InvokeRepeating ("Lightning", 4f, 4f);
 		}
+        gameManager.ResetNoteIndex();
 		//timeSlider.minValue = 0f;
 		//timeSlider.maxValue = timeCounter;
 		GenerateFullGrid ();

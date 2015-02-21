@@ -59,7 +59,7 @@ public class ZenGameManager : MonoBehaviour
 			//totalTap = 50;
 			timeCounter = 50f;
 		}
-
+        gameManager.ResetNoteIndex();
 		isGameStarted = false;
 		timeSlider.minValue = 0f;
 		timeSlider.maxValue = timeCounter;

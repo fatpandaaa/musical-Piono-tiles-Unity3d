@@ -58,7 +58,7 @@ public class ClassicGameManager : MonoBehaviour
 		} else if (currentMode == ClassicMode.Pro) {
 			totalTap = 50;
 		}
-
+        gameManager.ResetNoteIndex();
 		GenerateFullGrid ();
 		scoreText.text = timeCounter.ToString ("0.00") + " sec";
 	}

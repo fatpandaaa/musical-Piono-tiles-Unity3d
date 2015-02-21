@@ -73,7 +73,7 @@ public class ArcadeGameManager : MonoBehaviour
 			speed = 8;
 			Camera.main.transform.rotation = Quaternion.Euler (new Vector3 (0f, 0f, 180f));
 		}
-
+        gameManager.ResetNoteIndex();
 		//timeSlider.minValue = 0f;
 		//timeSlider.maxValue = timeCounter;
 		GenerateFullGrid ();
