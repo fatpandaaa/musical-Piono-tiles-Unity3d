@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int[] noteOrder2 = new int[26];
     public int[] noteOrder3 = new int[26];
     public int[] noteOrder4 = new int[26];
+    public int[] noteOrder5 = new int[26];
+    public int[] noteOrder6 = new int[26];
+    public int[] noteOrder7 = new int[26];
 
 	public AudioClip[] audio;
     public GameObject particleEffect;
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
 	public void PlayRandomNote ()
 	{
 		//int rnd = Random.Range (0, 26);
-        if (noteType <= 3)
+        if (noteType <= 6)
         {
             if (noteType == 0)
             {
@@ -139,10 +142,76 @@ public class GameManager : MonoBehaviour
                 if (noteInd >= noteOrder4.Length)
                     SetNoteIndex();
             }
+            else if (noteType == 4)
+            {
+                if (!audioSource[noteOrder5[noteInd] - 1].isPlaying)
+                    audioSource[noteOrder5[noteInd] - 1].Play();
+                else
+                {
+                    for (int i = 0; i < reserveAudio.Length; i++)
+                    {
+                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                        {
+                            reserveAudio[i].clip = audioSource[noteOrder4[noteInd] - 1].clip;
+                            reserveAudio[i].Play();
+                            break;
+                        }
+                    }
+
+                }
+
+                noteInd++;
+                if (noteInd >= noteOrder5.Length)
+                    SetNoteIndex();
+            }
+            else if (noteType == 5)
+            {
+                if (!audioSource[noteOrder6[noteInd] - 1].isPlaying)
+                    audioSource[noteOrder6[noteInd] - 1].Play();
+                else
+                {
+                    for (int i = 0; i < reserveAudio.Length; i++)
+                    {
+                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                        {
+                            reserveAudio[i].clip = audioSource[noteOrder6[noteInd] - 1].clip;
+                            reserveAudio[i].Play();
+                            break;
+                        }
+                    }
+
+                }
+
+                noteInd++;
+                if (noteInd >= noteOrder6.Length)
+                    SetNoteIndex();
+            }
+            else if (noteType == 6)
+            {
+                if (!audioSource[noteOrder7[noteInd] - 1].isPlaying)
+                    audioSource[noteOrder7[noteInd] - 1].Play();
+                else
+                {
+                    for (int i = 0; i < reserveAudio.Length; i++)
+                    {
+                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                        {
+                            reserveAudio[i].clip = audioSource[noteOrder7[noteInd] - 1].clip;
+                            reserveAudio[i].Play();
+                            break;
+                        }
+                    }
+
+                }
+
+                noteInd++;
+                if (noteInd >= noteOrder7.Length)
+                    SetNoteIndex();
+            }
         }
         else
         {
-            if (noteType == 4)
+            if (noteType == 7)
             {
                 if (!audioSource[noteOrder1[noteInd] - 1].isPlaying)
                     audioSource[noteOrder1[noteInd] - 1].Play();
@@ -160,7 +229,7 @@ public class GameManager : MonoBehaviour
                     
                 }
             }
-            else if (noteType == 5)
+            else if (noteType == 8)
             {
                 if (!audioSource[noteOrder2[noteInd] - 1].isPlaying)
                     audioSource[noteOrder2[noteInd] - 1].Play();
@@ -177,7 +246,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            else if (noteType == 6)
+            else if (noteType == 9)
             {
                 if (!audioSource[noteOrder3[noteInd] - 1].isPlaying)
                     audioSource[noteOrder3[noteInd] - 1].Play();
@@ -194,7 +263,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            else if (noteType == 7)
+            else if (noteType == 10)
             {
                 if (!audioSource[noteOrder4[noteInd] - 1].isPlaying)
                     audioSource[noteOrder4[noteInd] - 1].Play();
@@ -211,6 +280,57 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else if (noteType == 11)
+            {
+                if (!audioSource[noteOrder5[noteInd] - 1].isPlaying)
+                    audioSource[noteOrder5[noteInd] - 1].Play();
+                else
+                {
+                    for (int i = 0; i < reserveAudio.Length; i++)
+                    {
+                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                        {
+                            reserveAudio[i].clip = audioSource[noteOrder5[noteInd] - 1].clip;
+                            reserveAudio[i].Play();
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (noteType == 12)
+            {
+                if (!audioSource[noteOrder6[noteInd] - 1].isPlaying)
+                    audioSource[noteOrder6[noteInd] - 1].Play();
+                else
+                {
+                    for (int i = 0; i < reserveAudio.Length; i++)
+                    {
+                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                        {
+                            reserveAudio[i].clip = audioSource[noteOrder6[noteInd] - 1].clip;
+                            reserveAudio[i].Play();
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (noteType == 13)
+            {
+                if (!audioSource[noteOrder7[noteInd] - 1].isPlaying)
+                    audioSource[noteOrder7[noteInd] - 1].Play();
+                else
+                {
+                    for (int i = 0; i < reserveAudio.Length; i++)
+                    {
+                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                        {
+                            reserveAudio[i].clip = audioSource[noteOrder7[noteInd] - 1].clip;
+                            reserveAudio[i].Play();
+                            break;
+                        }
+                    }
+                }
+            }
 
             noteInd--;
             if (noteInd < 0)
@@ -219,20 +339,26 @@ public class GameManager : MonoBehaviour
 	}
 
     void SetNoteIndex() {
-        if (noteType <= 3)
+        if (noteType <= 6)
         {
             noteInd = 0;
         }
         else
         {
-            if (noteType == 4)
+            if (noteType == 7)
                 noteInd = noteOrder1.Length - 1;
-            else if (noteType == 5)
+            else if (noteType == 8)
                 noteInd = noteOrder2.Length - 1;
-            else if (noteType == 6)
+            else if (noteType == 9)
                 noteInd = noteOrder3.Length - 1;
-            else if (noteType == 7)
+            else if (noteType == 10)
                 noteInd = noteOrder4.Length - 1;
+            else if (noteType == 11)
+                noteInd = noteOrder5.Length - 1;
+            else if (noteType == 12)
+                noteInd = noteOrder6.Length - 1;
+            else if (noteType == 13)
+                noteInd = noteOrder7.Length - 1;
         }
     }
 
@@ -305,7 +431,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetNoteIndex() {
-        noteType = Random.Range(0, 8);
+        noteType = Random.Range(0, 14);
         SetNoteIndex();
     }
 
