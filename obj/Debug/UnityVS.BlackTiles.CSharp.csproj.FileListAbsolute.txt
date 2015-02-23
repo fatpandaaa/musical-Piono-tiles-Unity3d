@@ -1,0 +1,15 @@
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\OpenIAB_W8Plugin.dll
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEditor.dll
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEngine.Cloud.Analytics.dll
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEngine.dll
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEngine.xml
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEditor.xml
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+G:\Game Development\JoelKasr\BlackTiles\Temp\UnityVS_bin\Debug\OpenIAB_W8Plugin.pdb
+G:\Game Development\JoelKasr\BlackTiles\obj\Debug\UnityVS.BlackTiles.CSharp.csprojResolveAssemblyReference.cache
+G:\Game Development\JoelKasr\BlackTiles\obj\Debug\Assembly-CSharp.dll
+G:\Game Development\JoelKasr\BlackTiles\obj\Debug\Assembly-CSharp.pdb
