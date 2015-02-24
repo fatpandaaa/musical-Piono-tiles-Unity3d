@@ -96,7 +96,7 @@ public class ArcadeGameManager : MonoBehaviour
 				float avg = tapCounter / timeCounter;
 				timerText.text = avg.ToString ("0.000") + " / sec";
 			} else {
-				Debug.Log (tapCounter);
+				//Debug.Log (tapCounter);
 				timerText.text = tapCounter.ToString ();
 			}
 		}

@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public int[] noteOrder5 = new int[26];
     public int[] noteOrder6 = new int[26];
     public int[] noteOrder7 = new int[26];
+    public int[] noteOrder8 = new int[26];
+    public int[] noteOrder9 = new int[26];
+    public int[] noteOrder10 = new int[26];
 
 	public AudioClip[] audio;
     public GameObject particleEffect;
@@ -56,289 +59,230 @@ public class GameManager : MonoBehaviour
 	public void PlayRandomNote ()
 	{
 		//int rnd = Random.Range (0, 26);
-        if (noteType <= 6)
+        if (noteType == 0)
         {
-            if (noteType == 0)
+            if (!audioSource[noteOrder1[noteInd] - 1].isPlaying)
+                audioSource[noteOrder1[noteInd] - 1].Play();
+            else
             {
-                if (!audioSource[noteOrder1[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder1[noteInd] - 1].Play();
-                else {
-                    for (int i = 0; i < reserveAudio.Length; i++) {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1) {
-                            reserveAudio[i].clip = audioSource[noteOrder1[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                    
-                }
-
-                noteInd++;
-                if (noteInd >= noteOrder1.Length)
-                    SetNoteIndex();
-            }
-            else if (noteType == 1)
-            {
-                if (!audioSource[noteOrder2[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder2[noteInd] - 1].Play();
-                else
+                for (int i = 0; i < reserveAudio.Length; i++)
                 {
-                    for (int i = 0; i < reserveAudio.Length; i++)
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
                     {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder2[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
+                        reserveAudio[i].clip = audioSource[noteOrder1[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
                     }
                 }
 
-                noteInd++;
-                if (noteInd >= noteOrder2.Length)
-                    SetNoteIndex();
             }
-            else if (noteType == 2)
-            {
-                if (!audioSource[noteOrder3[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder3[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder3[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                    
-                }
 
-                noteInd++;
-                if (noteInd >= noteOrder3.Length)
-                    SetNoteIndex();
-            }
-            else if (noteType == 3)
-            {
-                if (!audioSource[noteOrder4[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder4[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder4[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                    
-                }
-
-                noteInd++;
-                if (noteInd >= noteOrder4.Length)
-                    SetNoteIndex();
-            }
-            else if (noteType == 4)
-            {
-                if (!audioSource[noteOrder5[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder5[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder4[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-
-                }
-
-                noteInd++;
-                if (noteInd >= noteOrder5.Length)
-                    SetNoteIndex();
-            }
-            else if (noteType == 5)
-            {
-                if (!audioSource[noteOrder6[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder6[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder6[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-
-                }
-
-                noteInd++;
-                if (noteInd >= noteOrder6.Length)
-                    SetNoteIndex();
-            }
-            else if (noteType == 6)
-            {
-                if (!audioSource[noteOrder7[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder7[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder7[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-
-                }
-
-                noteInd++;
-                if (noteInd >= noteOrder7.Length)
-                    SetNoteIndex();
-            }
+            noteInd++;
+            if (noteInd >= noteOrder1.Length)
+                SetNoteIndex();
         }
-        else
+        else if (noteType == 1)
         {
-            if (noteType == 7)
+            if (!audioSource[noteOrder2[noteInd] - 1].isPlaying)
+                audioSource[noteOrder2[noteInd] - 1].Play();
+            else
             {
-                if (!audioSource[noteOrder1[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder1[noteInd] - 1].Play();
-                else
+                for (int i = 0; i < reserveAudio.Length; i++)
                 {
-                    for (int i = 0; i < reserveAudio.Length; i++)
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
                     {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder1[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                    
-                }
-            }
-            else if (noteType == 8)
-            {
-                if (!audioSource[noteOrder2[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder2[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder2[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (noteType == 9)
-            {
-                if (!audioSource[noteOrder3[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder3[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder3[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (noteType == 10)
-            {
-                if (!audioSource[noteOrder4[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder4[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder4[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (noteType == 11)
-            {
-                if (!audioSource[noteOrder5[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder5[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder5[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (noteType == 12)
-            {
-                if (!audioSource[noteOrder6[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder6[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder6[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (noteType == 13)
-            {
-                if (!audioSource[noteOrder7[noteInd] - 1].isPlaying)
-                    audioSource[noteOrder7[noteInd] - 1].Play();
-                else
-                {
-                    for (int i = 0; i < reserveAudio.Length; i++)
-                    {
-                        if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
-                        {
-                            reserveAudio[i].clip = audioSource[noteOrder7[noteInd] - 1].clip;
-                            reserveAudio[i].Play();
-                            break;
-                        }
+                        reserveAudio[i].clip = audioSource[noteOrder2[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
                     }
                 }
             }
 
-            noteInd--;
-            if (noteInd < 0)
+            noteInd++;
+            if (noteInd >= noteOrder2.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 2)
+        {
+            if (!audioSource[noteOrder3[noteInd] - 1].isPlaying)
+                audioSource[noteOrder3[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder3[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder3.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 3)
+        {
+            if (!audioSource[noteOrder4[noteInd] - 1].isPlaying)
+                audioSource[noteOrder4[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder4[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder4.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 4)
+        {
+            if (!audioSource[noteOrder5[noteInd] - 1].isPlaying)
+                audioSource[noteOrder5[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder4[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder5.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 5)
+        {
+            if (!audioSource[noteOrder6[noteInd] - 1].isPlaying)
+                audioSource[noteOrder6[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder6[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder6.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 6)
+        {
+            if (!audioSource[noteOrder7[noteInd] - 1].isPlaying)
+                audioSource[noteOrder7[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder7[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder7.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 7)
+        {
+            if (!audioSource[noteOrder8[noteInd] - 1].isPlaying)
+                audioSource[noteOrder8[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder8[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder8.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 8)
+        {
+            if (!audioSource[noteOrder9[noteInd] - 1].isPlaying)
+                audioSource[noteOrder9[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder9[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder9.Length)
+                SetNoteIndex();
+        }
+        else if (noteType == 9)
+        {
+            if (!audioSource[noteOrder10[noteInd] - 1].isPlaying)
+                audioSource[noteOrder10[noteInd] - 1].Play();
+            else
+            {
+                for (int i = 0; i < reserveAudio.Length; i++)
+                {
+                    if (!reserveAudio[i].isPlaying || i == reserveAudio.Length - 1)
+                    {
+                        reserveAudio[i].clip = audioSource[noteOrder10[noteInd] - 1].clip;
+                        reserveAudio[i].Play();
+                        break;
+                    }
+                }
+
+            }
+
+            noteInd++;
+            if (noteInd >= noteOrder10.Length)
                 SetNoteIndex();
         }
 	}
 
     void SetNoteIndex() {
+        noteInd = 0;
+        /*
         if (noteType <= 6)
         {
             noteInd = 0;
@@ -360,6 +304,7 @@ public class GameManager : MonoBehaviour
             else if (noteType == 13)
                 noteInd = noteOrder7.Length - 1;
         }
+         * */
     }
 
     void RandomNoteGeneration() {
@@ -431,7 +376,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetNoteIndex() {
-        noteType = Random.Range(0, 14);
+        noteType = Random.Range(0, 10);
+        //noteType = 9;
         SetNoteIndex();
     }
 
